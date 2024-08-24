@@ -38,4 +38,9 @@ public class DiseaseController {
     public ResponseEntity<PagedModel> getAll(@PageableDefault(size = 10, sort = {"name"}) Pageable pageable) {
         return ResponseEntity.ok(new PagedModel(this.service.getAll(pageable)));
     }
+
+    @GetMapping("{id}")
+    public ResponseEntity details(@PathVariable String id) {
+        return ResponseEntity.ok(this.service.details(id));
+    }
 }

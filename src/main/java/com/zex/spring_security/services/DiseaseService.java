@@ -31,5 +31,9 @@ public class DiseaseService {
         return diseases.map(d -> new DiseaseResponse(d));
     }
 
+    public DiseaseResponse details(String id) {
+        return new DiseaseResponse(this.repository.getReferenceById(id));
+    }
+
 
 }
