@@ -6,4 +6,9 @@ public record DiseaseResponse(String id,
                               String symptoms,
                               String treatments,
                               Integer risk) {
+
+    public DiseaseResponse(Disease disease) {
+        this(disease.getId(), disease.getCid(), disease.getName(), disease.getSymptoms(), disease.getTreatments(),
+                disease.getRisk());
+    }
 }
