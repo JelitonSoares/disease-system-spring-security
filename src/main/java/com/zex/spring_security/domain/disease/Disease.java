@@ -26,4 +26,13 @@ public class Disease {
     private String treatments;
 
     private Integer risk;
+
+
+    public Disease(DiseaseRequest data) {
+        this.cid = data.cid();
+        this.name = data.name();
+        this.symptoms = data.symptoms();
+        this.treatments = data.treatments();
+        this.risk = data.risk();
+    }
 }
