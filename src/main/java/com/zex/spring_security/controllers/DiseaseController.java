@@ -3,10 +3,9 @@ package com.zex.spring_security.controllers;
 import com.zex.spring_security.domain.disease.Disease;
 import com.zex.spring_security.domain.disease.DiseaseRequest;
 import com.zex.spring_security.domain.disease.DiseaseResponse;
+import com.zex.spring_security.domain.disease.DiseaseSymptoms;
 import com.zex.spring_security.services.DiseaseService;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/disease")
@@ -24,7 +24,6 @@ public class DiseaseController {
     public DiseaseService service;
 
     @PostMapping
-    @Transactional
     public ResponseEntity save(@RequestBody @Valid DiseaseRequest data, UriComponentsBuilder builder) {
         Disease newDisease = this.service.save(data);
 
@@ -42,5 +41,12 @@ public class DiseaseController {
     @GetMapping("{id}")
     public ResponseEntity details(@PathVariable String id) {
         return ResponseEntity.ok(this.service.details(id));
+    }
+
+    @GetMapping("/symptoms")
+    public ResponseEntity findBySymptoms(@RequestBody DiseaseSymptoms data) {
+        List<DiseaseResponse> response = this.service.findBySymptoms(data.symptoms());
+
+        return ResponseEntity.ok(response);
     }
 }

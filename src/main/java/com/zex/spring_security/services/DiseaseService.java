@@ -4,6 +4,7 @@ import com.zex.spring_security.domain.disease.Disease;
 import com.zex.spring_security.domain.disease.DiseaseRequest;
 import com.zex.spring_security.domain.disease.DiseaseResponse;
 import com.zex.spring_security.repositories.DiseaseRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +18,7 @@ public class DiseaseService {
     @Autowired
     private DiseaseRepository repository;
 
-
+    @Transactional
     public Disease save(DiseaseRequest data) {
         Disease newDisease = new Disease(data);
 
@@ -35,5 +36,12 @@ public class DiseaseService {
         return new DiseaseResponse(this.repository.getReferenceById(id));
     }
 
+    public List<DiseaseResponse> findBySymptoms(String symptoms) {
+        List<Disease> diseaseList = repository.findBySymptomsContainingIgnoreCase(symptoms);
+
+        return diseaseList.stream()
+                .map(d -> new DiseaseResponse(d))
+                .collect(Collectors.toList());
+    }
 
 }
