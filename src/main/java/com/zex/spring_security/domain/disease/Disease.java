@@ -31,8 +31,8 @@ public class Disease {
     public Disease(DiseaseRequest data) {
         this.cid = data.cid();
         this.name = data.name();
-        this.symptoms = data.symptoms();
-        this.treatments = data.treatments();
+        this.symptoms = data.symptoms().toString();
+        this.treatments = data.treatments().toString();
         this.risk = data.risk();
     }
 }
