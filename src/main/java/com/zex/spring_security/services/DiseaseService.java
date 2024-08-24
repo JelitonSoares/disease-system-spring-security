@@ -5,6 +5,8 @@ import com.zex.spring_security.domain.disease.DiseaseRequest;
 import com.zex.spring_security.domain.disease.DiseaseResponse;
 import com.zex.spring_security.repositories.DiseaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,19 +18,17 @@ public class DiseaseService {
     private DiseaseRepository repository;
 
 
-    public DiseaseResponse save(DiseaseRequest data) {
+    public Disease save(DiseaseRequest data) {
         Disease newDisease = new Disease(data);
 
-        return new DiseaseResponse(this.repository.save(newDisease));
+        return this.repository.save(newDisease);
     }
 
 
-    public List<DiseaseResponse> getAll() {
-        List<Disease> diseases = this.repository.findAll();
+    public Page<DiseaseResponse> getAll(Pageable pageable) {
+        Page<Disease> diseases = this.repository.findAll(pageable);
 
-        return diseases.stream()
-                .map(d -> new DiseaseResponse(d))
-                .collect(Collectors.toList());
+        return diseases.map(d -> new DiseaseResponse(d));
     }
 
 
