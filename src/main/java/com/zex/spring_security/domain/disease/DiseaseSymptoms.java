@@ -1,4 +1,6 @@
 package com.zex.spring_security.domain.disease;
 
-public record DiseaseSymptoms(String symptoms) {
+import jakarta.validation.constraints.NotNull;
+
+public record DiseaseSymptoms(@NotNull String symptoms) {
 }

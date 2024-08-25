@@ -44,7 +44,7 @@ public class DiseaseController {
     }
 
     @GetMapping("/symptoms")
-    public ResponseEntity findBySymptoms(@RequestBody DiseaseSymptoms data) {
+    public ResponseEntity findBySymptoms(@RequestBody @Valid DiseaseSymptoms data) {
         List<DiseaseResponse> response = this.service.findBySymptoms(data.symptoms());
 
         return ResponseEntity.ok(response);
