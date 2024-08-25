@@ -3,6 +3,8 @@ package com.zex.spring_security.controllers;
 import com.zex.spring_security.domain.user.User;
 import com.zex.spring_security.domain.user.UserLogin;
 import com.zex.spring_security.domain.user.UserSignUp;
+import com.zex.spring_security.infra.token.TokenDTO;
+import com.zex.spring_security.infra.token.TokenService;
 import com.zex.spring_security.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -26,6 +28,8 @@ public class SecurityController {
     private BCryptPasswordEncoder encoder;
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid UserLogin data) {
@@ -36,8 +40,10 @@ public class SecurityController {
         Authentication authenticate = manager.authenticate(securityToken);
 
 
+        String tokenJWT = tokenService.generateToken((User) authenticate.getPrincipal());
 
-        return ResponseEntity.ok(authenticate.getCredentials());
+
+        return ResponseEntity.ok(new TokenDTO(tokenJWT));
     }
 
 
