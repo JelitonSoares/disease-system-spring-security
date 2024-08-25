@@ -1,8 +1,10 @@
 package com.zex.spring_security.infra.token;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.zex.spring_security.domain.user.User;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,21 @@ public class TokenService {
                     .withExpiresAt(expiresAt())
                     .sign(algorithm);
         } catch (JWTCreationException exception){
-            return "";
+            throw new RuntimeException("Error while generate token", exception);
+        }
+    }
+
+    public String verifyToken(String tokenJWT) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            return  JWT.require(algorithm)
+                    .withIssuer("ZexApi")
+                    .build()
+                    .verify(tokenJWT)
+                    .getSubject();
+
+        } catch (JWTVerificationException exception){
+            throw new RuntimeException("Token invalid/expired", exception);
         }
     }
 
