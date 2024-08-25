@@ -23,7 +23,8 @@ public class SecurityConfigurations {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "auth/signup").permitAll()
+                        .requestMatchers(HttpMethod.POST, "auth/signup").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/disease").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .build();
     }
