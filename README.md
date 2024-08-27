@@ -27,7 +27,7 @@ Who can make this request ?
 
 #### Path:
 ```http
-POST /auth/login
+POST /auth/login/
 ```
 #### Body:
 ```json
@@ -48,7 +48,7 @@ Who can make this request ?
 
 #### Path:
 ```http
-POST /auth/signin
+POST /auth/signup/
 ```
 #### Body:
 ```json
@@ -83,7 +83,7 @@ Who can make this request ?
 
 #### Path:
 ```http
-POST /disease
+POST /disease/
 ```
 #### Body:
 ```
