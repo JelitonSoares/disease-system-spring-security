@@ -40,6 +40,13 @@ public class DiseaseController {
         return ResponseEntity.ok(this.service.update(data));
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity delete (@PathVariable String id) {
+        this.service.delete(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("{id}")
     public ResponseEntity details(@PathVariable String id) {
         return ResponseEntity.ok(this.service.details(id));
