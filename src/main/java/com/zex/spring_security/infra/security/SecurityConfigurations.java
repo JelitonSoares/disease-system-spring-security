@@ -30,6 +30,8 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "auth/signup").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/disease").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/disease").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/disease/{id}").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
