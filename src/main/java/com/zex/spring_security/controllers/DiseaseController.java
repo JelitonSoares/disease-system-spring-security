@@ -1,9 +1,6 @@
 package com.zex.spring_security.controllers;
 
-import com.zex.spring_security.domain.disease.Disease;
-import com.zex.spring_security.domain.disease.DiseaseRequest;
-import com.zex.spring_security.domain.disease.DiseaseResponse;
-import com.zex.spring_security.domain.disease.DiseaseSymptoms;
+import com.zex.spring_security.domain.disease.*;
 import com.zex.spring_security.services.DiseaseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +33,11 @@ public class DiseaseController {
     @GetMapping
     public ResponseEntity<PagedModel> getAll(@PageableDefault(size = 10, sort = {"name"}) Pageable pageable) {
         return ResponseEntity.ok(new PagedModel(this.service.getAll(pageable)));
+    }
+
+    @PutMapping
+    public ResponseEntity update(@RequestBody @Valid DiseaseUpdateDTO data) {
+        return ResponseEntity.ok(this.service.update(data));
     }
 
     @GetMapping("{id}")
