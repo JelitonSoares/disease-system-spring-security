@@ -17,8 +17,15 @@ A Spring Security project for self learning. I used Security to authenticate end
 
 ## Login:
 To use the API you will first have to login, there ar two roles for users:
-* ADMIN: Has all permissions, can register a new user and register a disease. (user.user@Zex.com).
-* USER: Can only do queries, such as: find all, find by id and find by symptoms. (admin.admin@Zex.com).
+* ADMIN: Has all permissions, can register a new user and register a disease.
+* USER: Can only do queries, such as: find all, find by id and find by symptoms.
+
+#### Users login:
+| *Role*  | *Login*       | *Password*|
+|:--------|:--------------|:----------|
+|ADMIN    |admin@admin.com| admin123  |
+|USER     |user@user.com  | user123   |
+
 
 Who can make this request ?
 
