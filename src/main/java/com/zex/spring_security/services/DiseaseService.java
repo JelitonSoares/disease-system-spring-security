@@ -42,6 +42,12 @@ public class DiseaseService {
 
     }
 
+    public void delete (String uuid) {
+        Disease reference = repository.getReferenceById(uuid);
+
+        this.repository.delete(reference);
+    }
+
     public DiseaseResponse details(String id) {
         return new DiseaseResponse(this.repository.getReferenceById(id));
     }
