@@ -24,6 +24,7 @@ You will need:
 * Java 17+
 * Postgres 8+
 * IDE (of your preference).
+* Postman/Imsomnia to test.
 
 First, use the backup file to populate your database, it contains some common diseases and the two users already registered, you can add diseases and users of your choice.
 finally just start the project using your IDE.
@@ -62,7 +63,7 @@ POST /auth/login/
 A JWT (JSON Web Token) will be returned in the response body, you must use it in future requests.
 
 
-## Sign in:
+## Sign up:
 Who can make this request ?
 
 | ADMIN |
