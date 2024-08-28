@@ -35,4 +35,26 @@ public class Disease {
         this.treatments = data.treatments().toString();
         this.risk = data.risk();
     }
+
+    public void update(DiseaseUpdateDTO data) {
+        if(data.cid() != null) {
+            this.cid = data.cid();
+        }
+
+        if(data.name() != null) {
+            this.name = data.name();
+        }
+
+        if(data.symptoms() != null) {
+            this.symptoms = data.symptoms();
+        }
+
+        if(data.treatments() != null) {
+            this.treatments = data.treatments();
+        }
+
+        if(data.risk() != null) {
+            this.risk = data.risk();
+        }
+    }
 }
