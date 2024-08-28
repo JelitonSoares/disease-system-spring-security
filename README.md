@@ -13,9 +13,7 @@ A Spring Security project for self learning. I used Security to authenticate end
 * [*Maven*](https://maven.apache.org/guides/index.html)
 * [*PostgreSQL*](https://www.postgresql.org/docs/)
 
-# Doc:
-
-## Running Locally:
+# Running Locally:
 Clone the project:
 
 ```bash
@@ -30,7 +28,7 @@ You will need:
 First, use the backup file to populate your database, it contains some common diseases and the two users already registered, you can add diseases and users of your choice.
 finally just start the project using your IDE.
 
-
+# Doc:
 
 ## Login:
 To use the API you will first have to login, there ar two roles for users:
