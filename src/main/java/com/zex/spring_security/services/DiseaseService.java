@@ -3,6 +3,7 @@ package com.zex.spring_security.services;
 import com.zex.spring_security.domain.disease.Disease;
 import com.zex.spring_security.domain.disease.DiseaseRequest;
 import com.zex.spring_security.domain.disease.DiseaseResponse;
+import com.zex.spring_security.domain.disease.DiseaseUpdateDTO;
 import com.zex.spring_security.repositories.DiseaseRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,15 @@ public class DiseaseService {
         Page<Disease> diseases = this.repository.findAll(pageable);
 
         return diseases.map(d -> new DiseaseResponse(d));
+    }
+
+    public DiseaseUpdateDTO update(DiseaseUpdateDTO data) {
+        Disease reference = this.repository.getReferenceById(data.id());
+
+        reference.update(data);
+
+        return new DiseaseUpdateDTO(this.repository.save(reference));
+
     }
 
     public DiseaseResponse details(String id) {
