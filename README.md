@@ -56,7 +56,7 @@ POST /auth/login/
 #### Body:
 ```json
 {
-  "login": "user.user@Zex.com",
+  "login": "user@user.com",
   "password": "user123"
 }
 ```
@@ -77,7 +77,7 @@ POST /auth/signup/
 #### Body:
 ```json
 {
-  "login": "user.user@Zex.com",
+  "login": "user@user.com",
   "password": "user123",
   "role": "USER"
 }
