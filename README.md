@@ -15,6 +15,23 @@ A Spring Security project for self learning. I used Security to authenticate end
 
 # Doc:
 
+## Running Locally:
+Clone the project:
+
+```bash
+  git clone https://https://github.com/JelitonSoares/spring-security.git
+```
+
+You will need:
+* Java 17+
+* Postgres 8+
+* IDE (of your preference).
+
+First, use the backup file to populate your database, it contains some common diseases and the two users already registered, you can add diseases and users of your choice.
+finally just start the project
+
+
+
 ## Login:
 To use the API you will first have to login, there ar two roles for users:
 * ADMIN: Has all permissions, can register a new user and register a disease.
