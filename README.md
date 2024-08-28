@@ -28,7 +28,7 @@ You will need:
 * IDE (of your preference).
 
 First, use the backup file to populate your database, it contains some common diseases and the two users already registered, you can add diseases and users of your choice.
-finally just start the project
+finally just start the project using your IDE.
 
 
 
@@ -61,7 +61,7 @@ POST /auth/login/
 }
 ```
 #### Response:
-A JWT (JSON Web Token) will be returned in the response body, you must use it in future requests. To log in as ADMIN use: ```admin.admin@Zex.com```
+A JWT (JSON Web Token) will be returned in the response body, you must use it in future requests.
 
 
 ## Sign in:
