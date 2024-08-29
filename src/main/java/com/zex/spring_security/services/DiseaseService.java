@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,6 +51,14 @@ public class DiseaseService {
 
     public DiseaseResponse details(String id) {
         return new DiseaseResponse(this.repository.getReferenceById(id));
+    }
+
+    public List<DiseaseResponse> findByCid(String cid) {
+        List<Disease> diseases = this.repository.findByCidContainingIgnoreCase(cid);
+
+        return diseases.stream()
+                .map(d -> new DiseaseResponse(d))
+                .collect(Collectors.toList());
     }
 
     public List<DiseaseResponse> findBySymptoms(String symptoms) {
