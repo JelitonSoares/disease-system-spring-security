@@ -61,6 +61,14 @@ public class DiseaseService {
                 .collect(Collectors.toList());
     }
 
+    public List<DiseaseResponse> findByName(String name) {
+        List<Disease> diseases = this.repository.findByNameContainingIgnoreCase(name);
+
+        return diseases.stream()
+                .map(d -> new DiseaseResponse(d))
+                .collect(Collectors.toList());
+    }
+
     public List<DiseaseResponse> findBySymptoms(String symptoms) {
         List<Disease> diseaseList = repository.findBySymptomsContainingIgnoreCase(symptoms);
 

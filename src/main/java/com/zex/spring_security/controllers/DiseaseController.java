@@ -57,6 +57,13 @@ public class DiseaseController {
         return ResponseEntity.ok(this.service.findByCid(cid));
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity findByName(@PathVariable String name) {
+        return ResponseEntity.ok(this.service.findByName(name));
+    }
+
+
+
     @GetMapping("/symptoms")
     public ResponseEntity findBySymptoms(@RequestBody @Valid DiseaseSymptoms data) {
         List<DiseaseResponse> response = this.service.findBySymptoms(data.symptoms());
