@@ -234,7 +234,7 @@ GET /disease/name/{name}
 |:----------| :--------- | :---------------------------------- |
 | `name`    | `string` | Disease name
 
-Returns the disease with the chosen name. 
+Returns the disease with the chosen name.
 
 
 
