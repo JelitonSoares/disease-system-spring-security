@@ -32,7 +32,7 @@ public class SecurityController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Valid UserLogin data) {
+    public ResponseEntity<TokenDTO> login(@RequestBody @Valid UserLogin data) {
 
         UsernamePasswordAuthenticationToken securityToken =
                 new UsernamePasswordAuthenticationToken(data.login(), data.password());
