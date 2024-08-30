@@ -140,6 +140,48 @@ GET /disease/{id}
 Returns the disease with the chosen ID.
 
 
+## Update Disease:
+
+Who can make this request ?
+
+| ADMIN |
+|:------|
+
+
+#### Path:
+```http
+PUT /disease/
+```
+
+#### Body:
+```
+{
+  "id": "2d095e18-96a7-4a0f-a622-8b09dafcbecc",
+  "name": "Labyrinthitis Exemple"
+}
+```
+
+update a disease from ID.
+
+## Delete Disease
+
+Who can make this request ?
+
+| ADMIN |
+|:------|
+
+
+#### Path:
+```http
+DELETE /disease/
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `id` | `string` | Disease ID
+
+Delete the disease with this ID.
+
 
 ## Find by symptoms:
 Who can make this request ?
@@ -160,6 +202,39 @@ GET /disease/
 ```
 
 Returns all disease with these symptoms.
+
+## Find by CID
+
+Who can make this request ?
+
+| ADMIN | USER |
+|:------|:-----|
+
+#### Path:
+```http
+GET /disease/cid/{cid}
+```
+| Parâmetro | Tipo       | Descrição                           |
+|:----------| :--------- | :---------------------------------- |
+| `CID`     | `string` | Disease CID
+
+Returns the disease with the chosen CID.
+
+## Find by name
+Who can make this request ?
+
+| ADMIN | USER |
+|:------|:-----|
+
+#### Path:
+```http
+GET /disease/name/{name}
+```
+| Parâmetro | Tipo       | Descrição                           |
+|:----------| :--------- | :---------------------------------- |
+| `name`    | `string` | Disease name
+
+Returns the disease with the chosen name.
 
 
 
