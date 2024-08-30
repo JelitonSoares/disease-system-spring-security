@@ -34,6 +34,7 @@ public class DiseaseService {
         return diseases.map(d -> new DiseaseResponse(d));
     }
 
+    @Transactional
     public DiseaseUpdateDTO update(DiseaseUpdateDTO data) {
         Disease reference = this.repository.getReferenceById(data.id());
 
@@ -43,6 +44,7 @@ public class DiseaseService {
 
     }
 
+    @Transactional
     public void delete (String uuid) {
         Disease reference = repository.getReferenceById(uuid);
 
