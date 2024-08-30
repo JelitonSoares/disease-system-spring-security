@@ -21,7 +21,7 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<ExceptionMessage> exceptionHandler(Exception exception) {
-        return ResponseEntity.internalServerError()
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ExceptionMessage(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR));
     }
 
