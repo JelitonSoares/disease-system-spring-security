@@ -22,7 +22,7 @@ Clone the project:
 
 You will need:
 * Java 17+
-* Postgres 8+
+* Postgres 16+
 * IDE (of your preference).
 * Postman/Imsomnia to test.
 
